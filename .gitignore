@@ -1,0 +1,34 @@
+# Secrets and device-identifying configuration
+*.backup
+*.rif
+*.key
+*.pem
+*.p12
+*.pfx
+.env
+.env.*
+secrets/
+private/
+private-backups/
+raw-exports/
+raw-screenshots/
+# RouterOS export files: default deny; allow only reviewed files in a future curated path
+*.rsc
+!configs/public/*.rsc
+# VM images, appliance exports, archives and transient data
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+*.qcow2
+*.ova
+*.ovf
+*.iso
+*.zip
+*.7z
+*.tar
+*.gz
+*.log
+*.tmp
+__pycache__/
+.vscode/
