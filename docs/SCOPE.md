@@ -1,25 +1,31 @@
-# Project Scope — Baseline v1.0
+# 🎯 Project Scope
+![Scope](https://img.shields.io/badge/scope-FROZEN_v1.0-16a34a?style=flat-square)
 
-## In scope
+## ✅ In scope / ⛔ Out of scope
 
-- One Ubuntu Server monitoring VM with Zabbix server, database and web frontend.
-- One physical MikroTik hAP Lite router.
-- Up to two MikroTik CHR virtual routers.
-- Up to one additional monitored Linux VM if laptop resources permit.
-- ICMP, SNMP, availability, uptime, supported CPU/RAM/interface metrics.
-- Dashboard, triggers, alerts, controlled outages and incident response.
-- GitHub documentation, reproducible sanitized configurations and final demonstration.
+| ✅ Included | ⛔ Excluded |
+|:---|:---|
+| Ubuntu Server monitoring VM and Zabbix (server, database, frontend) | Kubernetes or high-availability cluster |
+| Physical MikroTik hAP Lite | Multi-cloud or paid cloud infrastructure |
+| Up to two virtual MikroTik CHR routers | Enterprise SD-WAN, production-scale BGP/OSPF |
+| One optional monitored Linux VM if resources allow | Full SIEM/SOC or AI/ML anomaly detection |
+| ICMP, SNMP, metrics supported by each device | Prometheus/Grafana stack, LibreNMS |
+| Dashboard, triggers, notifications, controlled outages | Custom full-stack web dashboard |
+| Incident investigation, recovery testing and reproducible documentation | Automated self-healing or new paid hardware |
 
-## Out of scope
+**Python automation:** Optional future work; not required for the core project.
 
-Kubernetes, HA cluster, multi-cloud, production-scale SD-WAN/BGP/OSPF, AI/ML anomaly detection, complete SIEM/SOC, Prometheus/Grafana addition, LibreNMS, custom full-stack dashboard, automated self-healing, new paid hardware/cloud/services.
+## 🔄 Change control
 
-Python automation is not a core-project requirement.
+| Step | Action |
+|:---|:---|
+| 🔍 Evidence | Describe the issue and observed evidence |
+| 🛠️ Minimal fix | Choose the smallest correction that preserves scope |
+| 📐 Impact | Document effect on milestones and deliverables |
+| 🗳️ Decision | Obtain approval for any scope change |
+| 📝 Record | Update decisions or changelog when relevant |
 
-## Change control
+## 🔐 Publishing rules
 
-Record problem evidence, smallest fix, impact, and classification (Bug Fix / Implementation Adjustment / Scope Change). Scope changes need explicit approval and a recorded decision.
-
-## Publishing policy
-
-Publish only safe, necessary and reproducible project content. Never push raw binary backups, unreviewed `.rsc` exports, credentials, private keys, secrets, unredacted identification data, `.vdi/.vmdk` images, or personal data. Keep only relevant sanitized evidence.
+> [!CAUTION]
+> Never publish binary device backups, unreviewed RouterOS exports, passwords, Wi-Fi credentials, SNMP secrets, SSH private keys, API tokens, sensitive device identifiers or VM disk images. Examples must be sanitized and reproducible; evidence must reflect actual tests.

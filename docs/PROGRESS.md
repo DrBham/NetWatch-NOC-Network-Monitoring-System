@@ -1,41 +1,47 @@
-# Progress Log
+# 📊 Project Progress
+![Stage](https://img.shields.io/badge/current-Phase_0_Review-f59e0b?style=flat-square) ![Deployment](https://img.shields.io/badge/deployment-NOT_STARTED-64748b?style=flat-square)
+
+## 🧭 Milestone overview
+
+| Subphase | Status | Evidence |
+|:---|:---|:---|
+| 0.1 Environment inventory | ✅ Completed | Hardware, software and resource assessment |
+| 0.2 Physical MikroTik assessment | ✅ Completed | RouterOS, interfaces, IP/DHCP and firewall baseline review |
+| 0.3 Architecture planning | ✅ Planning completed | Proposed topology, IP plan and resource estimates |
+| 0.4 Repository baseline | 🟡 Reported complete / audit pending | GitHub and LinkedIn reported published; practical review outstanding |
+| Phase 1 implementation | ⚪ Not started | No custom configuration deployed |
+
+## 📌 Machine-readable record
 
 ```yaml
 project: NetWatch NOC
 baseline: v1.0
 current_phase: 0
 current_subphase: '0.4'
-status: IN_PROGRESS
+status: REVIEW_PENDING
 completed_subphases:
-  - '0.1 Environment Inventory (assessment completed)'
-  - '0.2 Physical MikroTik Assessment (assessment completed)'
-  - '0.3 Architecture & Network Planning (planning completed)'
+  - '0.1 Environment Inventory'
+  - '0.2 Physical MikroTik Assessment'
+  - '0.3 Architecture and Network Planning'
 pending_tasks:
-  - 'Review and publish Phase 0 baseline repository'
-  - 'Security-review staged files before first push'
-  - 'Confirm GitHub and LinkedIn entries exist'
-  - 'Run Phase 0 formal assessment before closure'
+  - 'Independently review committed architecture and IP plan'
+  - 'Confirm formal Phase 0 practical acceptance and closure'
+  - 'Record milestone tag after Phase 0 passes'
 verified_configuration:
-  - 'No new NetWatch custom router configuration deployed'
-  - 'Physical router default baseline was assessed; current live state not revalidated'
+  - 'Physical router default baseline examined during assessment'
+  - 'Custom NetWatch WAN/LAN setup not deployed'
 decisions:
-  - 'Public-first documentation, tested sanitized configs later'
-  - 'Plan WLAN WAN and Ethernet LAN on physical MikroTik'
-  - 'Plan Zabbix bridged LAN plus host-only CHR management'
+  - 'Public-first sanitized documentation'
+  - 'Plan hAP Lite Wi-Fi WAN to Ethernet LAN'
+  - 'Plan Ubuntu bridged LAN and Host-only CHR management'
 open_issues:
   - 'RAM and disk headroom limited'
-  - 'VirtualBox host-only IPv4 mismatch pending correction'
-  - 'Wi-Fi WAN and bridged VM connectivity untested'
-  - 'Route and return-path for lab subnets TBD'
-assessment_status: 'Phase 0 final assessment NOT_STARTED'
-last_commit: null
-next_action: 'Create GitHub repository, review files, commit, push, then portfolio entry'
+  - 'VirtualBox Host-only IP mismatch not corrected'
+  - 'WAN association, bridged VM reachability and return routing not tested'
+assessment_status: 'Knowledge reassessment completed; practical audit pending'
+last_commit: 'Reported pushed; hash not verified'
+next_action: 'Review documentation and complete formal Phase 0 acceptance'
 ```
 
-## Evidence summary
-
-- Phase 0.1: CPU, RAM, storage, host OS, VirtualBox/GNS3 versions inventoried. Ubuntu Server ISO not yet available.
-- Phase 0.2: hAP Lite RouterOS/hardware/interface/DHCP/firewall/NAT reviewed. User reported local backup and export downloads. Raw backups are private and not included here.
-- Phase 0.3: Proposed topology, routing segmentation, resource plan and security constraints discussed. No configuration changes are claimed for the custom plan.
-
-*Update this log after actual actions. A documentation file existing locally is not proof it has been pushed to GitHub.*
+> [!WARNING]
+> Reported GitHub/LinkedIn publication is not equivalent to independent audit of remote content. The Phase 0 milestone is not marked closed until the practical gate passes.

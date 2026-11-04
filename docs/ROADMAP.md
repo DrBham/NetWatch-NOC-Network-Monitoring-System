@@ -1,17 +1,29 @@
-# Project Roadmap — Baseline v1.0
+# 🧭 Project Roadmap
+![Baseline](https://img.shields.io/badge/baseline-v1.0-2563eb?style=flat-square) ![Progress](https://img.shields.io/badge/current-Phase_0_Review-f59e0b?style=flat-square)
 
-**Scope freeze:** Seven phases and 29 subphases. Only one subphase active at a time. Changes require a recorded decision.
+> [!IMPORTANT]
+> **Scope freeze:** Seven phases, 29 subphases. One active subphase at a time; material scope changes require approval and a documented decision.
 
-| Phase | Subphases | Main deliverable | Milestone |
-|---|---|---|---|
-| 0. Project Governance & Lab Assessment | 0.1 Environment Inventory; 0.2 Physical MikroTik Assessment; 0.3 Architecture & Network Planning; 0.4 Repository & Project Baseline | Baseline, risks, documentation | `phase-0-project-baseline` |
-| 1. Network Lab Preparation | 1.1 Physical Connection; 1.2 Basic Router Configuration; 1.3 Connectivity Validation; 1.4 Security & Configuration Backup | Working and protected lab network | `phase-1-network-lab` |
-| 2. Zabbix Server Deployment | 2.1 Ubuntu Server VM Preparation; 2.2 Ubuntu Installation & Linux Basics; 2.3 VM Network Configuration; 2.4 Zabbix Installation; 2.5 Zabbix Service & Web Validation | Verified Ubuntu/Zabbix stack | `phase-2-zabbix-deployment` |
-| 3. Physical MikroTik Monitoring | 3.1 Protocol Fundamentals; 3.2 Secure SNMP Configuration; 3.3 Zabbix Host Integration; 3.4 Dashboard & Baseline | Physical router monitoring | `phase-3-mikrotik-monitoring` |
-| 4. Virtual Network Expansion | 4.1 Virtual Topology Planning; 4.2 CHR Deployment; 4.3 Virtual Connectivity & Monitoring; 4.4 Multi-Device Validation | CHR/host monitoring | `phase-4-virtual-network` |
-| 5. Alerting & Incident Simulation | 5.1 Trigger & Threshold; 5.2 Notifications; 5.3 Controlled Incidents; 5.4 Investigation & Recovery | Verified incident reports | `phase-5-incident-management` |
-| 6. Final Validation & Portfolio Release | 6.1 End-to-End Tests; 6.2 Documentation Review; 6.3 GitHub & LinkedIn Portfolio; 6.4 Technical Defense | Portfolio and final assessment | `v1.0.0` |
+## 🗂️ Milestones
 
-## Phase gate
+| Phase | Subphases | Primary deliverable | Git milestone |
+|:---|:---|:---|:---|
+| ✅ **0 · Governance & assessment** | 0.1 Inventory · 0.2 Router assessment · 0.3 Architecture · 0.4 Repository | Validated project baseline | `phase-0-project-baseline` (pending formal closure) |
+| ⚪ **1 · Network preparation** | 1.1 Physical · 1.2 Router setup · 1.3 Connectivity · 1.4 Security/backup | Protected, reachable lab | `phase-1-network-lab` |
+| ⚪ **2 · Zabbix deployment** | 2.1 VM · 2.2 Ubuntu · 2.3 Network · 2.4 Installation · 2.5 Validation | Functional Ubuntu/Zabbix stack | `phase-2-zabbix-deployment` |
+| ⚪ **3 · Physical monitoring** | 3.1 Protocols · 3.2 SNMP · 3.3 Host integration · 3.4 Dashboard | Physical MikroTik metrics | `phase-3-mikrotik-monitoring` |
+| ⚪ **4 · Virtual network** | 4.1 Topology · 4.2 CHR · 4.3 Integration · 4.4 Multi-device test | Monitored virtual devices | `phase-4-virtual-network` |
+| ⚪ **5 · Incidents** | 5.1 Triggers · 5.2 Alerts · 5.3 Simulations · 5.4 Recovery | Event, incident and recovery evidence | `phase-5-incident-management` |
+| ⚪ **6 · Final release** | 6.1 Acceptance · 6.2 Docs review · 6.3 Portfolio · 6.4 Defense | Final demonstration | `v1.0.0` |
 
-Each phase requires evidence and a formal assessment: five conceptual questions (25%), three scenarios (25%), one practical demonstration (30%), and one troubleshooting analysis (20%). Pass at 80/100 with verified practical work and no critical acceptance failures.
+## ✅ Phase acceptance rules
+
+| Assessment | Weight | Requirement |
+|:---|---:|:---|
+| 🧠 5 theory questions | 25% | Demonstrate understanding |
+| 🧩 3 scenario analyses | 25% | Reason from network behavior |
+| 🛠️ 1 practical demonstration | 30% | Evidence-verified |
+| 🔍 1 troubleshooting/RCA | 20% | Explain cause, fix and proof |
+
+> [!NOTE]
+> **PASS:** ≥80/100, verified practical work, and no critical acceptance failure. No implementation phase is declared complete merely because commands ran successfully.

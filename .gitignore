@@ -32,3 +32,15 @@ raw-screenshots/
 *.tmp
 __pycache__/
 .vscode/
+
+# Local/private artifacts (never publish)
+*.backup
+*.rif
+*.vdi
+*.vmdk
+*.qcow2
+*.ova
+.env
+.env.*
+private/
+private-backups/

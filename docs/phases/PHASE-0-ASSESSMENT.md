@@ -1,23 +1,25 @@
-# Phase 0 — Assessment Summary (Public)
+# 🧪 Phase 0 — Assessment Summary
+![Status](https://img.shields.io/badge/status-FORMAL_REVIEW-f59e0b?style=flat-square)
 
-**This is a sanitized summary, not a configuration dump or proof of a deployed NOC.**
+> [!NOTE]
+> Sanitized public record of assessment and planning. Not a configuration dump or proof of a deployed NOC.
 
-## 0.1 Environment Inventory
+## 📋 Subphase results
 
-Host: Windows 11 Home, 12 GB RAM, Intel Core i5-12450HX; VirtualBox 7.2.14 and GNS3 2.2.61 present at assessment. Windows RAM available at one measurement ~4.4 GB. Storage headroom was limited (system partition especially). Ubuntu Server ISO not yet downloaded. **Outcome:** inventory completed; deployment capacity risk open.
+| Subphase | Completed work | Remaining condition |
+|:---|:---|:---|
+| ✅ **0.1 · Environment** | Windows 11, 12 GB RAM, i5-12450HX, VirtualBox/GNS3 inventoried; memory and disk risks noted | Capacity must be measured during deployment |
+| ✅ **0.2 · Router baseline** | hAP Lite RouterOS, interfaces, IP/DHCP, filter/NAT reviewed; user reported backup and export download | Original files intentionally private; custom configuration not applied |
+| ✅ **0.3 · Planning** | Wireless WAN, Ethernet LAN, bridged Ubuntu and Host-only CHR plan documented | Live routing and connectivity untested |
+| 🟡 **0.4 · Repository** | Documentation, GitHub push and LinkedIn entry reported complete | Independent repository/practical review and formal closure pending |
 
-## 0.2 Physical MikroTik Assessment
+## 🛡️ Security practices
 
-Physical MikroTik hAP Lite assessed with RouterOS 7.20.7; default interface, bridge, IP/DHCP, firewall and NAT reviewed. User reported downloads of local binary backup and text export. **Outcome:** initial baseline inventory completed; original backup/export excluded from public repository. Device identifiers, credentials and raw WinBox views are intentionally omitted.
+| Published | Excluded |
+|:---|:---|
+| Redacted device roles, conceptual IP plan, architectural choices | Binary backups and unreviewed `.rsc` exports |
+| Practical test plan and documented decisions | Passwords, device IDs, Wi-Fi keys and private credentials |
 
-## 0.3 Architecture and Network Planning
+## 🎓 Learning validation
 
-Proposed custom routed Wi-Fi WAN (2.4 GHz WPA2) → MikroTik Ethernet LAN (`10.77.10.0/24`), Ubuntu Zabbix bridged LAN + host-only CHR management (`192.168.56.0/24`), CHR virtual LAN (`10.77.20.0/24`). **Outcome:** initial plan formulated. Integration, addressing conflicts, NAT, routing and connectivity remain to be tested during relevant implementation phases.
-
-## 0.4 Repository & Project Baseline
-
-**IN PROGRESS** until the repository exists, files have been reviewed and committed/pushed, and Phase 0 acceptance/assessment completed. LinkedIn project is separate and optional for this milestone.
-
-## Security and evidence policy
-
-Raw device backups, device-unique identifiers, Wi-Fi passwords, SNMP community strings, keys, and non-sanitized exports are intentionally not included. Later phases will publish *tested* clean configuration templates, diagrams, and verification results.
+The formal assessment and targeted reassessment have been conducted. The default-route knowledge check was passed; the **practical repository audit and final overall phase score are not yet confirmed**. This summary does not assert Phase 0 formal closure.

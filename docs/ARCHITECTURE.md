@@ -1,41 +1,54 @@
-# Planned Architecture — Phase 0.3
+# 🏗️ Network Architecture
+![Design](https://img.shields.io/badge/design-PROPOSED-f59e0b?style=flat-square) ![Network](https://img.shields.io/badge/topology-NOT_DEPLOYED-64748b?style=flat-square)
 
-> **Status: Proposed design, not a deployed or tested topology.**
+> [!IMPORTANT]
+> This is the **Phase 0.3 conceptual design**. Link behavior, IP assignments and service operation are not yet validated on the proposed custom network.
 
-## Components
+## 🧱 Core components
 
-- Host: Windows 11 Home, 12 GB RAM, VirtualBox 7.2.14, GNS3 2.2.61 (observed at assessment).
-- Physical device: MikroTik hAP Lite (RouterOS 7.20.7 observed at assessment).
-- Upstream: home 2.4 GHz WPA2-Personal/CCMP Wi-Fi as a potential routed WAN (`wlan1`, station mode).
-- LAN: MikroTik bridge over selected Ethernet ports, with source NAT on wireless WAN, appropriate firewall and admin hardening.
-- Monitoring VM: Ubuntu Server 24.04 LTS with Zabbix (7.0 LTS preferred pending compatibility check).
-- VM interfaces: bridged to laptop physical Ethernet for physical-router monitoring and internet through MikroTik; host-only for virtual CHR management. One default route via physical LAN gateway.
-- GNS3: existing VirtualBox-integrated CHR method; optional additional CHR/Linux monitored host only if resources permit.
+| 🏠 Physical / host | 🖥️ Virtual / monitoring |
+|:---|:---|
+| Windows 11 laptop, 12 GB RAM | Ubuntu Server 24.04 LTS, Zabbix 7.0 LTS preferred pending installation check |
+| hAP Lite with wireless `wlan1` WAN | VirtualBox Bridged NIC on Ethernet for Zabbix LAN |
+| Wi-Fi home upstream: 2.4 GHz WPA2/CCMP | VirtualBox Host-only NIC for CHR management |
+| LAN via MikroTik Ethernet bridge | MikroTik CHR via VirtualBox integration with GNS3 |
 
-## Connectivity diagram
+## 🗺️ Logical connections
 
 ```mermaid
 flowchart LR
-    UP[Home Wi-Fi 2.4 GHz] -->|station / DHCP WAN, planned| MT[MikroTik hAP Lite]
-    MT -->|Ethernet LAN 10.77.10.0/24| HOST[Windows Host]
-    HOST --- VM[Ubuntu Zabbix VM
-Bridged 10.77.10.20]
-    VM -->|Host-only 192.168.56.0/24| CHR[CHR ether1 mgmt 192.168.56.30]
-    CHR -->|ether2| GNS[GNS3 lab 10.77.20.0/24]
+    A["🏠 Upstream Wi-Fi"] -. "wlan1 station / WAN DHCP" .-> B["📡 hAP Lite"]
+    B --> C["🔗 LAN 10.77.10.0/24"]
+    C --> W["💻 Windows Ethernet"]
+    C --> Z["🖥️ Ubuntu Zabbix<br/>10.77.10.20"]
+    Z --- H["🔧 Host-only<br/>192.168.56.0/24"]
+    H --- R["🌐 CHR ether1<br/>192.168.56.30"]
+    R --- L["🧪 CHR ether2<br/>10.77.20.0/24"]
+    classDef physical fill:#dcfce7,stroke:#16a34a,color:#166534
+    classDef virtual fill:#dbeafe,stroke:#2563eb,color:#1e40af
+    class B,C,W physical
+    class Z,H,R,L virtual
 ```
 
-*The drawing expresses logical relationships. Ubuntu is hosted on Windows; it does not have a separate physical Ethernet cable.*
+## 🔀 Network roles
 
-## Design and risks
+| Segment | Design role | Routing requirement |
+|:---|:---|:---|
+| `10.77.10.0/24` | Physical LAN / Zabbix internet and hAP Lite monitoring | Default route via `10.77.10.1` for Internet |
+| `192.168.56.0/24` | VirtualBox host-only CHR management | Directly connected between configured VM NICs; no extra default gateway |
+| `10.77.20.0/24` | CHR simulation subnet | Routing and return path required if monitoring hosts behind CHR |
 
-1. **Do not implement Phase 0 networking changes prematurely.** Custom configuration belongs to Phase 1.
-2. hAP Lite wireless is 2.4 GHz; association and WPA2 interoperability must still be tested.
-3. VirtualBox bridged networking over the physical Ethernet must be proven; host-only adapter currently has a mismatched IPv4 configuration and requires correction at implementation.
-4. CHR management and Zabbix host-only IPs may communicate via automatically connected route; no extra gateway on host-only.
-5. The proposed physical LAN and virtual LAN are different subnets. Monitoring behind CHR requires an explicit routing/return path and firewall review.
-6. Host internet availability/metrics may change during transition; avoid dual default-route ambiguity.
-7. Limit VM concurrency until actual host memory consumption is measured.
+## ⚠️ Validation gates
 
-## Rebuildability
+| Risk / dependency | Planned validation |
+|:---|:---|
+| Wi-Fi WAN station association | Validate WPA2 and routing in Phase 1 |
+| Custom LAN vs existing default config | Backup, phased change and security testing |
+| Bridged VirtualBox to physical Ethernet | Confirm VM reaches hAP Lite and Internet in Phase 2 |
+| Host-only IPv4 mismatch | Correct and verify before using CHR management network |
+| RAM/storage pressure | Deploy gradually and measure actual usage |
+| Multi-subnet reachability | Check return route and firewall before incident tests |
 
-Later phases will produce tested setup instructions, redacted configurations, network validation commands and expected results. A diagram alone is not a runnable lab.
+## 📦 Rebuildability
+
+The final repository is planned to include tested, sanitized `.rsc` examples, GNS3 wiring guidance, installation steps, and connectivity tests. **This diagram alone is not a runnable lab.**
