@@ -10,6 +10,7 @@
 | D-005 | Ubuntu bridged LAN + Host-only CHR management | Monitoring on two directly connected segments | 🟡 Proposed; untested |
 | D-006 | Ubuntu: 2 vCPU / 3 GiB / 25 GiB dynamic; CHR1: 1 vCPU / 256 MiB | Restrained resource allocation | 🟡 Estimate |
 | D-007 | Evidence screenshots only when they add value | Keep documentation concise and reviewable | ✅ Agreed |
+| D-008 | Close Phase 0 based on knowledge reassessment and review of the submitted local architecture/IP-plan documentation; start Phase 1.1 | Keep implementation within the approved roadmap | ✅ Accepted for project progression; remote repository verification remains separate |
 
 > [!IMPORTANT]
 > No scope change is recorded. Revisit untested choices only when validation evidence justifies it.

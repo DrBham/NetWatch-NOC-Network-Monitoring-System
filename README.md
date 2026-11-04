@@ -3,7 +3,7 @@
 # 📡 NetWatch NOC
 ### Network Monitoring & Incident Management Lab
 
-![Status](https://img.shields.io/badge/status-PHASE_0_REVIEW-f59e0b?style=flat-square) ![Lab](https://img.shields.io/badge/type-Network_Operations_Lab-2563eb?style=flat-square) ![Scope](https://img.shields.io/badge/scope-7_Phases_%7C_29_Subphases-0891b2?style=flat-square)
+![Status](https://img.shields.io/badge/status-PHASE_1_IN_PROGRESS-2563eb?style=flat-square) ![Lab](https://img.shields.io/badge/type-Network_Operations_Lab-2563eb?style=flat-square) ![Scope](https://img.shields.io/badge/scope-7_Phases_%7C_29_Subphases-0891b2?style=flat-square)
 
 **MikroTik · GNS3 · VirtualBox · Ubuntu Server · Zabbix**
 
@@ -14,7 +14,7 @@
 </div>
 
 > [!IMPORTANT]
-> **Current stage: Phase 0 review.** Hardware assessment and initial network planning are complete. The repository and LinkedIn project have been reported as published; the practical documentation audit and formal phase closure remain pending. No custom hAP Lite deployment or Zabbix monitoring has been verified.
+> **Current stage: Phase 1.1 — Physical Connection (in progress).** Phase 0 baseline documentation, physical router assessment, architecture planning and knowledge reassessment have been completed. The next task is to validate safe physical connectivity. Custom RouterOS configuration and Zabbix installation have **not** started.
 
 ## 🧭 Project at a glance
 
@@ -31,8 +31,9 @@
 | ✅ **0.1 · Environment inventory** | Completed | Hardware/software inventory; capacity risks noted |
 | ✅ **0.2 · Physical router assessment** | Completed | RouterOS, interface, DHCP and firewall baseline reviewed |
 | ✅ **0.3 · Architecture planning** | Planned baseline | Logical topology, addressing and resource proposals |
-| 🟡 **0.4 · Repository baseline** | Reported published; audit pending | Initial documentation and GitHub/LinkedIn reported complete |
-| ⚪ **1–6 · Implementation to release** | Not started | Connectivity, Zabbix, CHR monitoring, incidents and final validation |
+| ✅ **0.4 · Repository baseline** | Local documentation reviewed | Baseline files, Git history and published project reported; remote state not independently verified |
+| 🔵 **1.1 · Physical connection** | In progress | Safe laptop-to-hAP Lite connection and link verification pending |
+| ⚪ **1.2–6 · Implementation to release** | Not started | Custom router setup, Zabbix, CHR monitoring, incidents and final validation |
 
 ## 🗺️ Proposed network architecture
 
@@ -61,7 +62,7 @@ flowchart TB
 | 🏗️ Design & governance | 📍 Implementation & tracking |
 |:---|:---|
 | [🗺️ Architecture](docs/ARCHITECTURE.md) | [📊 Progress log](docs/PROGRESS.md) |
-| [🧮 IP addressing plan](docs/IP-PLAN.md) | [🧪 Phase 0 assessment](docs/phases/PHASE-0-ASSESSMENT.md) |
+| [🧮 IP addressing plan](docs/IP-PLAN.md) | [🧪 Phase 0 assessment](docs/phases/PHASE-0-ASSESSMENT.md) · [🔌 Phase 1 plan](docs/phases/PHASE-1-NETWORK-LAB.md) |
 | [🎯 Project scope](docs/SCOPE.md) | [🧭 Roadmap](docs/ROADMAP.md) |
 | [📝 Architecture decisions](docs/DECISIONS.md) | 🔜 Deployment evidence and tested configurations (later phases) |
 
