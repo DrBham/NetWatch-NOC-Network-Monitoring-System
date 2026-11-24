@@ -1,78 +1,81 @@
 <div align="center">
 
-# 📡 NetWatch NOC
-### Network Monitoring & Incident Management Lab
+# NetWatch NOC
 
-![Status](https://img.shields.io/badge/status-PHASE_1_IN_PROGRESS-2563eb?style=flat-square) ![Lab](https://img.shields.io/badge/type-Network_Operations_Lab-2563eb?style=flat-square) ![Scope](https://img.shields.io/badge/scope-7_Phases_%7C_29_Subphases-0891b2?style=flat-square)
+**Network monitoring and incident management lab with MikroTik, GNS3, Ubuntu Server, and Zabbix**
 
-**MikroTik · GNS3 · VirtualBox · Ubuntu Server · Zabbix**
-
-*A documented network operations home lab, progressing from infrastructure assessment to monitoring, alerting and incident response.*
+![Status](https://img.shields.io/badge/Status-Phase%201.1%20In%20Progress-2563eb?style=flat-square)
+![Type](https://img.shields.io/badge/Type-Network%20Operations%20Lab-0f766e?style=flat-square)
+![Roadmap](https://img.shields.io/badge/Roadmap-7%20Phases%20%C2%B7%2029%20Subphases-64748b?style=flat-square)
 
 [Architecture](docs/ARCHITECTURE.md) · [IP Plan](docs/IP-PLAN.md) · [Roadmap](docs/ROADMAP.md) · [Progress](docs/PROGRESS.md)
 
 </div>
 
+## Overview
+
+NetWatch NOC is a home lab for practising network operations: monitoring devices, raising alerts, and handling incidents end to end. It combines a physical MikroTik hAP Lite, virtual MikroTik CHR routers in GNS3, and a Zabbix server on Ubuntu.
+
+The project is delivered in seven phases, from infrastructure assessment to a final demonstration. Each phase ends with a review, and results are published only after they have been tested.
+
 > [!IMPORTANT]
-> **Current stage: Phase 1.1 — Physical Connection (in progress).** Phase 0 baseline documentation, physical router assessment, architecture planning and knowledge reassessment have been completed. The next task is to validate safe physical connectivity. Custom RouterOS configuration and Zabbix installation have **not** started.
+> **Current stage: Phase 1.1 — Physical Connection.** Phase 0 (inventory, router assessment, architecture planning, and repository baseline) is complete. Custom RouterOS configuration and the Zabbix installation have not started yet.
 
-## 🧭 Project at a glance
+## Goals
 
-| 🎯 Purpose | 🧪 Environment | 🔎 Monitoring targets |
-|:---|:---|:---|
-| Build a testable network monitoring and incident-response lab | Physical MikroTik + virtual Linux/RouterOS systems | ICMP/SNMP, availability, interfaces, CPU, memory and uptime when supported |
-| **🛠 Stack** | **📋 Delivery** | **🔐 Publication** |
-| RouterOS, GNS3, VirtualBox, Ubuntu Server, Zabbix | 7 phases, 29 subphases, review at each milestone | Sanitized configs and evidence; no device backups or secrets |
+| Area | Target |
+|---|---|
+| **Monitoring** | ICMP and SNMP checks for availability, interfaces, CPU, memory, and uptime where the device supports them |
+| **Alerting** | Zabbix triggers, dashboards, and notifications |
+| **Incidents** | Controlled outages, investigation, and recovery testing |
+| **Documentation** | Reproducible setup with sanitized configurations and test evidence |
 
-## 📍 Project status
+**Stack:** MikroTik RouterOS (hAP Lite and CHR), GNS3, Oracle VirtualBox, Ubuntu Server, Zabbix.
 
-| Stage | Status | Outcome |
-|:---|:---|:---|
-| ✅ **0.1 · Environment inventory** | Completed | Hardware/software inventory; capacity risks noted |
-| ✅ **0.2 · Physical router assessment** | Completed | RouterOS, interface, DHCP and firewall baseline reviewed |
-| ✅ **0.3 · Architecture planning** | Planned baseline | Logical topology, addressing and resource proposals |
-| ✅ **0.4 · Repository baseline** | Local documentation reviewed | Baseline files, Git history and published project reported; remote state not independently verified |
-| 🔵 **1.1 · Physical connection** | In progress | Safe laptop-to-hAP Lite connection and link verification pending |
-| ⚪ **1.2–6 · Implementation to release** | Not started | Custom router setup, Zabbix, CHR monitoring, incidents and final validation |
+## Progress
 
-## 🗺️ Proposed network architecture
+| Phase | Scope | Status |
+|---|---|---|
+| **0 · Governance & assessment** | Inventory, physical router assessment, architecture plan, repository baseline | Completed |
+| **1 · Network preparation** | Physical connection, router setup, connectivity, security and backup | In progress (1.1) |
+| **2 · Zabbix deployment** | Ubuntu VM, networking, Zabbix installation and validation | Not started |
+| **3 · Physical monitoring** | SNMP, host integration, dashboard for the hAP Lite | Not started |
+| **4 · Virtual network** | CHR topology in GNS3, multi-device monitoring | Not started |
+| **5 · Incidents** | Triggers, alerts, outage simulations, recovery | Not started |
+| **6 · Final release** | Acceptance tests, documentation review, demonstration | Not started |
+
+Details for each subphase are in the [roadmap](docs/ROADMAP.md) and [progress log](docs/PROGRESS.md).
+
+## Planned Architecture
 
 ```mermaid
 flowchart TB
-    UP["🏠 Home Wi-Fi<br/>2.4 GHz / WPA2"] -. "Planned wlan1 WAN" .-> R["📶 hAP Lite<br/>LAN gateway: 10.77.10.1"]
-    R --> N["🔗 NetWatch LAN<br/>10.77.10.0/24"]
-    N --> W["💻 Windows host<br/>Ethernet: 10.77.10.10"]
-    N --> Z["🖥️ Ubuntu + Zabbix<br/>Bridged: 10.77.10.20"]
-    Z --- H["🔧 VirtualBox Host-only<br/>192.168.56.0/24"]
-    H --- C["🌐 MikroTik CHR 1<br/>Mgmt: 192.168.56.30"]
-    C --- G["🧪 GNS3 lab LAN<br/>10.77.20.0/24"]
-    classDef wan fill:#dbeafe,stroke:#2563eb,color:#1e40af
-    classDef lan fill:#dcfce7,stroke:#16a34a,color:#166534
-    classDef virt fill:#f3e8ff,stroke:#9333ea,color:#6b21a8
-    class UP,R wan
-    class N,W lan
-    class Z,H,C,G virt
+    UP["Home Wi-Fi<br/>2.4 GHz / WPA2"] -. "Planned wlan1 WAN" .-> R["hAP Lite<br/>LAN gateway: 10.77.10.1"]
+    R --> N["NetWatch LAN<br/>10.77.10.0/24"]
+    N --> W["Windows host<br/>Ethernet: 10.77.10.10"]
+    N --> Z["Ubuntu + Zabbix<br/>Bridged: 10.77.10.20"]
+    Z --- H["VirtualBox Host-only<br/>192.168.56.0/24"]
+    H --- C["MikroTik CHR 1<br/>Mgmt: 192.168.56.30"]
+    C --- G["GNS3 lab LAN<br/>10.77.20.0/24"]
 ```
 
-> [!NOTE]
-> Diagram ini menunjukkan **rencana logis**, bukan bukti konektivitas. Ubuntu berjalan di laptop Windows; tidak membutuhkan kabel Ethernet terpisah. Jalur internet, mode bridge, Host-only dan return routing baru akan dibuktikan pada fase implementasi.
+This diagram is the planned logical design, not tested connectivity. Ubuntu runs as a VM on the Windows laptop, so it needs no separate Ethernet cable. The Wi-Fi WAN, bridged and host-only networking, and return routing will be validated during implementation.
 
-## 📚 Documentation hub
+## Documentation
 
-| 🏗️ Design & governance | 📍 Implementation & tracking |
-|:---|:---|
-| [🗺️ Architecture](docs/ARCHITECTURE.md) | [📊 Progress log](docs/PROGRESS.md) |
-| [🧮 IP addressing plan](docs/IP-PLAN.md) | [🧪 Phase 0 assessment](docs/phases/PHASE-0-ASSESSMENT.md) · [🔌 Phase 1 plan](docs/phases/PHASE-1-NETWORK-LAB.md) |
-| [🎯 Project scope](docs/SCOPE.md) | [🧭 Roadmap](docs/ROADMAP.md) |
-| [📝 Architecture decisions](docs/DECISIONS.md) | 🔜 Deployment evidence and tested configurations (later phases) |
+| Design | Tracking |
+|---|---|
+| [Architecture](docs/ARCHITECTURE.md) | [Progress log](docs/PROGRESS.md) |
+| [IP addressing plan](docs/IP-PLAN.md) | [Phase 0 assessment](docs/phases/PHASE-0-ASSESSMENT.md) |
+| [Project scope](docs/SCOPE.md) | [Phase 1 plan](docs/phases/PHASE-1-NETWORK-LAB.md) |
+| [Architecture decisions](docs/DECISIONS.md) | [Roadmap](docs/ROADMAP.md) |
 
-## 🔬 Testing and reproducibility
+Tested RouterOS `.rsc` examples, GNS3 rebuild steps, the Zabbix setup guide, and incident test results will be added as each phase is completed.
 
-| Available now | Planned after implementation |
-|:---|:---|
-| Architecture, addressing proposal, requirements and design decisions | Validated MikroTik `.rsc` examples, GNS3 rebuild instructions, Zabbix setup, connectivity and incident tests |
+## Scope
 
-> [!CAUTION]
-> Raw `.backup`, unreviewed `.rsc`, passwords, Wi-Fi keys, SNMP secrets, private keys, identifying device details and VM disk images are **not included**. A public `.rsc` must be sanitized **and** verified on a clean lab before being labeled reusable.
+**Out of scope:** high-availability clusters, paid cloud infrastructure, production-scale BGP/OSPF, full SIEM/SOC tooling, and alternative monitoring stacks such as Prometheus/Grafana or LibreNMS. The full list is in [SCOPE.md](docs/SCOPE.md).
 
-**Project classification:** Educational home lab · **Not production-ready** · Results are published only after verification.
+**Not published:** device backups, unreviewed RouterOS exports, passwords, Wi-Fi keys, SNMP secrets, private keys, identifying device details, and VM disk images. Any `.rsc` shared here is sanitized and verified on a clean lab first.
+
+This is an educational home lab, not a production-ready system.
